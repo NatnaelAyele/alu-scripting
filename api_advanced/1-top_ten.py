@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" return top ten posts for a subreddit"""
+""" return top ten"""
 
 import requests
 

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Queries the Reddit API and prints the titles of the top 10 hot posts of a subreddit."""
+""" Queries the Reddit API and prints the titles of the top 10 hot posts of a subreddit."""
 import requests
 
 

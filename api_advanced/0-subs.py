@@ -3,12 +3,12 @@
 Queries the Reddit API and returns the number of subscribers
 for a given subreddit.
 """
-
+i
 import requests
 
 
 def number_of_subscribers(subreddit):
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    url = f"https://www.reddit.com/r/{}/about.json".format(subreddit)
 
     headers = {
         "User-Agent": "linux:0-subs:v1.0 (by /Natnael)"

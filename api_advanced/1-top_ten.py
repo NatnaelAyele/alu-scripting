@@ -5,13 +5,22 @@ import requests
 
 
 def top_ten(subreddit):
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if not response.ok:
+   url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    headers = {"User-Agent": "linux:0-top-ten:v1.0 (by /u/Natnael)"}
+
+    try:
+        response = requests.get(url, headers=headers, allow_redirects=False)
+        if response.status_code != 200:
+            print(None)
+            return
+
+        posts = response.json().get("data", {}).get("children", [])
+        if not posts:
+            print(None)
+            return
+
+        for post in posts[:10]:
+            print(post.get("data", {}).get("title"))
+
+    except Exception:
         print(None)
-        return
-    json_data = response.json()
-    posts = json_data['data']['children']
-    for i in range(min(10, len(posts))):
-        print(posts[i]['data']['title'])

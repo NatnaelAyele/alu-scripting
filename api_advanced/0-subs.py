@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+"""
+queries the reddit api and returns number of subscribers
+"""
+import requests
+
+
+def number_of_subscribers(subreddit):
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+
+    headers = {
+        "User-Agent": "linux:0-subs:v1.0 (by /Natnael)"
+    }
+
+    try:
+        response = requests.get(
+            url,
+            headers=headers,
+            allow_redirects=False
+        )
+
+        if response.status_code != 200:
+            return 0
+
+        data = response.json()
+        return data.get("data", {}).get("subscribers", 0)
+
+    except Exception:
+        return 0
